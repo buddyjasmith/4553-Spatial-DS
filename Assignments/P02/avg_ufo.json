@@ -1,0 +1,296 @@
+[
+    {
+        "city": "Portland",
+        "latitude": -122.676482,
+        "longitude": 45.523062,
+        "avg_ufo": 0.01686
+    },
+    {
+        "city": "Seattle",
+        "latitude": -122.332071,
+        "longitude": 47.606209,
+        "avg_ufo": 0.00668
+    },
+    {
+        "city": "Los Angeles",
+        "latitude": -118.243685,
+        "longitude": 34.052234,
+        "avg_ufo": 0.03628
+    },
+    {
+        "city": "Boise City",
+        "latitude": -116.214607,
+        "longitude": 43.61871,
+        "avg_ufo": 0.03037
+    },
+    {
+        "city": "Las Vegas",
+        "latitude": -115.13983,
+        "longitude": 36.169941,
+        "avg_ufo": 0.05486
+    },
+    {
+        "city": "Phoenix",
+        "latitude": -112.074037,
+        "longitude": 33.448377,
+        "avg_ufo": 0.09041
+    },
+    {
+        "city": "Salt Lake City",
+        "latitude": -111.891047,
+        "longitude": 40.760779,
+        "avg_ufo": 0.05701
+    },
+    {
+        "city": "Billings",
+        "latitude": -108.50069,
+        "longitude": 45.783286,
+        "avg_ufo": 0.20627
+    },
+    {
+        "city": "Albuquerque",
+        "latitude": -106.605553,
+        "longitude": 35.085334,
+        "avg_ufo": 0.01942
+    },
+    {
+        "city": "Denver",
+        "latitude": -104.990251,
+        "longitude": 39.739236,
+        "avg_ufo": 0.03146
+    },
+    {
+        "city": "Cheyenne",
+        "latitude": -104.820246,
+        "longitude": 41.139981,
+        "avg_ufo": 0.35365
+    },
+    {
+        "city": "Oklahoma City",
+        "latitude": -97.516428,
+        "longitude": 35.46756,
+        "avg_ufo": 0.01077
+    },
+    {
+        "city": "Wichita",
+        "latitude": -97.336111,
+        "longitude": 37.688889,
+        "avg_ufo": 0.00998
+    },
+    {
+        "city": "Fargo",
+        "latitude": -96.789803,
+        "longitude": 46.877186,
+        "avg_ufo": 0.53191
+    },
+    {
+        "city": "Sioux Falls",
+        "latitude": -96.731103,
+        "longitude": 43.544596,
+        "avg_ufo": 0.14044
+    },
+    {
+        "city": "Omaha",
+        "latitude": -95.997988,
+        "longitude": 41.252363,
+        "avg_ufo": 0.06689
+    },
+    {
+        "city": "Houston",
+        "latitude": -95.369803,
+        "longitude": 29.760427,
+        "avg_ufo": 0.08319
+    },
+    {
+        "city": "Kansas City",
+        "latitude": -94.578567,
+        "longitude": 39.099727,
+        "avg_ufo": 0.01413
+    },
+    {
+        "city": "Des Moines",
+        "latitude": -93.609106,
+        "longitude": 41.600545,
+        "avg_ufo": 0.00984
+    },
+    {
+        "city": "Minneapolis",
+        "latitude": -93.265011,
+        "longitude": 44.977753,
+        "avg_ufo": 0.02846
+    },
+    {
+        "city": "Little Rock",
+        "latitude": -92.289595,
+        "longitude": 34.746481,
+        "avg_ufo": 0.08662
+    },
+    {
+        "city": "Jackson",
+        "latitude": -90.18481,
+        "longitude": 32.298757,
+        "avg_ufo": 0.18465
+    },
+    {
+        "city": "New Orleans",
+        "latitude": -90.071532,
+        "longitude": 29.951066,
+        "avg_ufo": 0.04083
+    },
+    {
+        "city": "Memphis",
+        "latitude": -90.04898,
+        "longitude": 35.149534,
+        "avg_ufo": 0.12295
+    },
+    {
+        "city": "Milwaukee",
+        "latitude": -87.906474,
+        "longitude": 43.038902,
+        "avg_ufo": 0.05503
+    },
+    {
+        "city": "Chicago",
+        "latitude": -87.629798,
+        "longitude": 41.878114,
+        "avg_ufo": 0.03826
+    },
+    {
+        "city": "Birmingham",
+        "latitude": -86.80249,
+        "longitude": 33.520661,
+        "avg_ufo": 0.08381
+    },
+    {
+        "city": "Indianapolis",
+        "latitude": -86.158068,
+        "longitude": 39.768403,
+        "avg_ufo": 0.04233
+    },
+    {
+        "city": "Louisville/Jefferson County",
+        "latitude": -85.758456,
+        "longitude": 38.252665,
+        "avg_ufo": 0.07981
+    },
+    {
+        "city": "Atlanta",
+        "latitude": -84.387982,
+        "longitude": 33.748995,
+        "avg_ufo": 0.05974
+    },
+    {
+        "city": "Detroit",
+        "latitude": -83.045754,
+        "longitude": 42.331427,
+        "avg_ufo": 0.07277
+    },
+    {
+        "city": "Columbus",
+        "latitude": -82.998794,
+        "longitude": 39.961176,
+        "avg_ufo": 0.04224
+    },
+    {
+        "city": "Jacksonville",
+        "latitude": -81.655651,
+        "longitude": 30.332184,
+        "avg_ufo": 0.07619
+    },
+    {
+        "city": "Charleston",
+        "latitude": -81.632623,
+        "longitude": 38.34982,
+        "avg_ufo": 0.19548
+    },
+    {
+        "city": "Columbia",
+        "latitude": -81.034814,
+        "longitude": 34.00071,
+        "avg_ufo": 0.09108
+    },
+    {
+        "city": "Charlotte",
+        "latitude": -80.843127,
+        "longitude": 35.227087,
+        "avg_ufo": 0.02708
+    },
+    {
+        "city": "Washington",
+        "latitude": -77.036871,
+        "longitude": 38.907192,
+        "avg_ufo": 0.01188
+    },
+    {
+        "city": "Baltimore",
+        "latitude": -76.612189,
+        "longitude": 39.290385,
+        "avg_ufo": 0.02269
+    },
+    {
+        "city": "Virginia Beach",
+        "latitude": -75.977985,
+        "longitude": 36.852926,
+        "avg_ufo": 0.0854
+    },
+    {
+        "city": "Wilmington",
+        "latitude": -75.539788,
+        "longitude": 39.739072,
+        "avg_ufo": 0.09151
+    },
+    {
+        "city": "Philadelphia",
+        "latitude": -75.165222,
+        "longitude": 39.952584,
+        "avg_ufo": 0.04272
+    },
+    {
+        "city": "Newark",
+        "latitude": -74.172367,
+        "longitude": 40.735657,
+        "avg_ufo": 0.05097
+    },
+    {
+        "city": "New York",
+        "latitude": -74.005941,
+        "longitude": 40.712784,
+        "avg_ufo": 0.03641
+    },
+    {
+        "city": "Burlington",
+        "latitude": -73.212072,
+        "longitude": 44.475882,
+        "avg_ufo": 0.10341
+    },
+    {
+        "city": "Bridgeport",
+        "latitude": -73.195177,
+        "longitude": 41.186548,
+        "avg_ufo": 0.04527
+    },
+    {
+        "city": "Manchester",
+        "latitude": -71.454789,
+        "longitude": 42.99564,
+        "avg_ufo": 0.071
+    },
+    {
+        "city": "Providence",
+        "latitude": -71.412834,
+        "longitude": 41.823989,
+        "avg_ufo": 0.03379
+    },
+    {
+        "city": "Boston",
+        "latitude": -71.05888,
+        "longitude": 42.360082,
+        "avg_ufo": 0.02032
+    },
+    {
+        "city": "Portland1",
+        "latitude": -70.255326,
+        "longitude": 43.661471,
+        "avg_ufo": 0.09207
+    }
+]

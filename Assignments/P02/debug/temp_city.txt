@@ -1,0 +1,49 @@
+Portland
+Seattle
+Los Angeles
+Boise City
+Las Vegas
+Phoenix
+Salt Lake City
+Billings
+Albuquerque
+Denver
+Cheyenne
+Oklahoma City
+Wichita
+Fargo
+Sioux Falls
+Omaha
+Houston
+Kansas City
+Des Moines
+Minneapolis
+Little Rock
+Jackson
+New Orleans
+Memphis
+Milwaukee
+Chicago
+Birmingham
+Indianapolis
+Louisville/Jefferson County
+Atlanta
+Detroit
+Columbus
+Jacksonville
+Charleston
+Columbia
+Charlotte
+Washington
+Baltimore
+Virginia Beach
+Wilmington
+Philadelphia
+Newark
+New York
+Burlington
+Bridgeport
+Manchester
+Providence
+Boston
+Portland1
