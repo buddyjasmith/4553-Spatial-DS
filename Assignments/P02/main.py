@@ -114,7 +114,7 @@ class IWantToBelieve:
             #pprint(dist_list, indent=4) if debug else ...
 
             avg_city = {
-                'city' : str(output[i]['city']),
+                'city': str(output[i]['city']),
                 'latitude': float(self.geo[i].x),
                 'longitude': float(self.geo[i].y),
                 'avg_ufo': float(round(avg_dst, 5))
