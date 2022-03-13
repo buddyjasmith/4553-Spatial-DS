@@ -1,5 +1,8 @@
 ##  Assignments Folder
 
-|   #   | Folder Link | Assignment Description |
-| :---: | ----------- | ---------------------- |
-|  A01     | NA            | Update roster info, join slack channel|                        |
+# Program 3
+# Buddy Smith
+
+|  File   | Folder Link | Assignment Description                  |
+|:-------:|----------|-----------------------------------------|
+| main.py |          | Update roster info, join slack channel  |                        |

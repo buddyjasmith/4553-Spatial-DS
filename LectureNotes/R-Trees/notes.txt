@@ -1,0 +1,10 @@
+OSMNx
+    -> python library
+    -> create graphs from places
+    -> graphml: xml version of networkx, stores topological info as well, geopanda works well with it
+
+    -> shapefile: watershed info, etc
+    -> networkx: smallest version of latitude longitude edge points across the us
+    -> allows you to connect nearest neighbor, etc
+    -> anything to big causes timeout issues
+->Dataverse harvard 

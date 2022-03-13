@@ -11,7 +11,7 @@
                 "population": 42284,
                 "state": "Vermont",
                 "rank": 1,
-                "marker-color": "#21E",
+                "marker-color": "#87F",
                 "marker-size": "medium",
                 "marker-symbol": 1
             },
@@ -33,7 +33,7 @@
                 "population": 50821,
                 "state": "West Virginia",
                 "rank": 2,
-                "marker-color": "#8D0",
+                "marker-color": "#5E0",
                 "marker-size": "medium",
                 "marker-symbol": 2
             },
@@ -55,7 +55,7 @@
                 "population": 62448,
                 "state": "Wyoming",
                 "rank": 3,
-                "marker-color": "#6B9",
+                "marker-color": "#28D",
                 "marker-size": "medium",
                 "marker-symbol": 3
             },
@@ -77,7 +77,7 @@
                 "population": 66318,
                 "state": "Maine",
                 "rank": 4,
-                "marker-color": "#100",
+                "marker-color": "#ABD",
                 "marker-size": "medium",
                 "marker-symbol": 4
             },
@@ -99,7 +99,7 @@
                 "population": 71525,
                 "state": "Delaware",
                 "rank": 5,
-                "marker-color": "#571",
+                "marker-color": "#298",
                 "marker-size": "medium",
                 "marker-symbol": 5
             },
@@ -121,7 +121,7 @@
                 "population": 109059,
                 "state": "Montana",
                 "rank": 6,
-                "marker-color": "#C23",
+                "marker-color": "#FB9",
                 "marker-size": "medium",
                 "marker-symbol": 6
             },
@@ -143,7 +143,7 @@
                 "population": 110378,
                 "state": "New Hampshire",
                 "rank": 7,
-                "marker-color": "#D00",
+                "marker-color": "#D82",
                 "marker-size": "medium",
                 "marker-symbol": 7
             },
@@ -165,7 +165,7 @@
                 "population": 113658,
                 "state": "North Dakota",
                 "rank": 8,
-                "marker-color": "#DC4",
+                "marker-color": "#174",
                 "marker-size": "medium",
                 "marker-symbol": 8
             },
@@ -187,7 +187,7 @@
                 "population": 133358,
                 "state": "South Carolina",
                 "rank": 9,
-                "marker-color": "#02B",
+                "marker-color": "#161",
                 "marker-size": "medium",
                 "marker-symbol": 9
             },
@@ -209,7 +209,7 @@
                 "population": 147216,
                 "state": "Connecticut",
                 "rank": 10,
-                "marker-color": "#DC1",
+                "marker-color": "#C94",
                 "marker-size": "medium",
                 "marker-symbol": 10
             },
@@ -231,7 +231,7 @@
                 "population": 164676,
                 "state": "South Dakota",
                 "rank": 11,
-                "marker-color": "#059",
+                "marker-color": "#818",
                 "marker-size": "medium",
                 "marker-symbol": 11
             },
@@ -253,7 +253,7 @@
                 "population": 172638,
                 "state": "Mississippi",
                 "rank": 12,
-                "marker-color": "#BBF",
+                "marker-color": "#07A",
                 "marker-size": "medium",
                 "marker-symbol": 12
             },
@@ -275,7 +275,7 @@
                 "population": 177994,
                 "state": "Rhode Island",
                 "rank": 13,
-                "marker-color": "#637",
+                "marker-color": "#C31",
                 "marker-size": "medium",
                 "marker-symbol": 13
             },
@@ -297,7 +297,7 @@
                 "population": 191180,
                 "state": "Utah",
                 "rank": 14,
-                "marker-color": "#509",
+                "marker-color": "#011",
                 "marker-size": "medium",
                 "marker-symbol": 14
             },
@@ -319,7 +319,7 @@
                 "population": 197357,
                 "state": "Arkansas",
                 "rank": 15,
-                "marker-color": "#A7D",
+                "marker-color": "#9C6",
                 "marker-size": "medium",
                 "marker-symbol": 15
             },
@@ -341,7 +341,7 @@
                 "population": 207510,
                 "state": "Iowa",
                 "rank": 16,
-                "marker-color": "#48C",
+                "marker-color": "#E9E",
                 "marker-size": "medium",
                 "marker-symbol": 16
             },
@@ -363,7 +363,7 @@
                 "population": 212113,
                 "state": "Alabama",
                 "rank": 17,
-                "marker-color": "#486",
+                "marker-color": "#8DC",
                 "marker-size": "medium",
                 "marker-symbol": 17
             },
@@ -385,7 +385,7 @@
                 "population": 214237,
                 "state": "Idaho",
                 "rank": 18,
-                "marker-color": "#FF5",
+                "marker-color": "#0F1",
                 "marker-size": "medium",
                 "marker-symbol": 18
             },
@@ -407,7 +407,7 @@
                 "population": 278427,
                 "state": "New Jersey",
                 "rank": 19,
-                "marker-color": "#143",
+                "marker-color": "#A91",
                 "marker-size": "medium",
                 "marker-symbol": 19
             },
@@ -429,7 +429,7 @@
                 "population": 378715,
                 "state": "Louisiana",
                 "rank": 20,
-                "marker-color": "#6DA",
+                "marker-color": "#8EA",
                 "marker-size": "medium",
                 "marker-symbol": 20
             },
@@ -451,7 +451,7 @@
                 "population": 386552,
                 "state": "Kansas",
                 "rank": 21,
-                "marker-color": "#B3A",
+                "marker-color": "#637",
                 "marker-size": "medium",
                 "marker-symbol": 21
             },
@@ -473,7 +473,7 @@
                 "population": 400070,
                 "state": "Minnesota",
                 "rank": 22,
-                "marker-color": "#A62",
+                "marker-color": "#5F1",
                 "marker-size": "medium",
                 "marker-symbol": 22
             },
@@ -495,7 +495,7 @@
                 "population": 434353,
                 "state": "Nebraska",
                 "rank": 23,
-                "marker-color": "#10C",
+                "marker-color": "#1B7",
                 "marker-size": "medium",
                 "marker-symbol": 23
             },
@@ -517,7 +517,7 @@
                 "population": 447841,
                 "state": "Georgia",
                 "rank": 24,
-                "marker-color": "#8C2",
+                "marker-color": "#9D7",
                 "marker-size": "medium",
                 "marker-symbol": 24
             },
@@ -539,7 +539,7 @@
                 "population": 448479,
                 "state": "Virginia",
                 "rank": 25,
-                "marker-color": "#01D",
+                "marker-color": "#B05",
                 "marker-size": "medium",
                 "marker-symbol": 25
             },
@@ -561,7 +561,7 @@
                 "population": 467007,
                 "state": "Missouri",
                 "rank": 26,
-                "marker-color": "#BD5",
+                "marker-color": "#2A2",
                 "marker-size": "medium",
                 "marker-symbol": 26
             },
@@ -583,7 +583,7 @@
                 "population": 556495,
                 "state": "New Mexico",
                 "rank": 27,
-                "marker-color": "#B5C",
+                "marker-color": "#F33",
                 "marker-size": "medium",
                 "marker-symbol": 27
             },
@@ -605,7 +605,7 @@
                 "population": 599164,
                 "state": "Wisconsin",
                 "rank": 28,
-                "marker-color": "#957",
+                "marker-color": "#83D",
                 "marker-size": "medium",
                 "marker-symbol": 28
             },
@@ -627,7 +627,7 @@
                 "population": 603488,
                 "state": "Nevada",
                 "rank": 29,
-                "marker-color": "#86B",
+                "marker-color": "#E22",
                 "marker-size": "medium",
                 "marker-symbol": 29
             },
@@ -649,7 +649,7 @@
                 "population": 609456,
                 "state": "Oregon",
                 "rank": 30,
-                "marker-color": "#407",
+                "marker-color": "#A0E",
                 "marker-size": "medium",
                 "marker-symbol": 30
             },
@@ -671,7 +671,7 @@
                 "population": 609893,
                 "state": "Kentucky",
                 "rank": 31,
-                "marker-color": "#AB3",
+                "marker-color": "#0A1",
                 "marker-size": "medium",
                 "marker-symbol": 31
             },
@@ -693,7 +693,7 @@
                 "population": 610613,
                 "state": "Oklahoma",
                 "rank": 32,
-                "marker-color": "#CD0",
+                "marker-color": "#38F",
                 "marker-size": "medium",
                 "marker-symbol": 32
             },
@@ -715,7 +715,7 @@
                 "population": 622104,
                 "state": "Maryland",
                 "rank": 33,
-                "marker-color": "#448",
+                "marker-color": "#962",
                 "marker-size": "medium",
                 "marker-symbol": 33
             },
@@ -737,7 +737,7 @@
                 "population": 645966,
                 "state": "Massachusetts",
                 "rank": 34,
-                "marker-color": "#492",
+                "marker-color": "#BBD",
                 "marker-size": "medium",
                 "marker-symbol": 34
             },
@@ -759,7 +759,7 @@
                 "population": 646449,
                 "state": "District of Columbia",
                 "rank": 35,
-                "marker-color": "#7B4",
+                "marker-color": "#E34",
                 "marker-size": "medium",
                 "marker-symbol": 35
             },
@@ -781,7 +781,7 @@
                 "population": 649495,
                 "state": "Colorado",
                 "rank": 36,
-                "marker-color": "#928",
+                "marker-color": "#D6F",
                 "marker-size": "medium",
                 "marker-symbol": 36
             },
@@ -803,7 +803,7 @@
                 "population": 652405,
                 "state": "Washington",
                 "rank": 37,
-                "marker-color": "#A2E",
+                "marker-color": "#4A0",
                 "marker-size": "medium",
                 "marker-symbol": 37
             },
@@ -825,7 +825,7 @@
                 "population": 653450,
                 "state": "Tennessee",
                 "rank": 38,
-                "marker-color": "#9D3",
+                "marker-color": "#D62",
                 "marker-size": "medium",
                 "marker-symbol": 38
             },
@@ -847,7 +847,7 @@
                 "population": 688701,
                 "state": "Michigan",
                 "rank": 39,
-                "marker-color": "#765",
+                "marker-color": "#7A6",
                 "marker-size": "medium",
                 "marker-symbol": 39
             },
@@ -869,7 +869,7 @@
                 "population": 792862,
                 "state": "North Carolina",
                 "rank": 40,
-                "marker-color": "#197",
+                "marker-color": "#318",
                 "marker-size": "medium",
                 "marker-symbol": 40
             },
@@ -891,7 +891,7 @@
                 "population": 822553,
                 "state": "Ohio",
                 "rank": 41,
-                "marker-color": "#95E",
+                "marker-color": "#5E4",
                 "marker-size": "medium",
                 "marker-symbol": 41
             },
@@ -913,7 +913,7 @@
                 "population": 842583,
                 "state": "Florida",
                 "rank": 42,
-                "marker-color": "#B30",
+                "marker-color": "#60C",
                 "marker-size": "medium",
                 "marker-symbol": 42
             },
@@ -935,7 +935,7 @@
                 "population": 843393,
                 "state": "Indiana",
                 "rank": 43,
-                "marker-color": "#76F",
+                "marker-color": "#2B9",
                 "marker-size": "medium",
                 "marker-symbol": 43
             },
@@ -957,7 +957,7 @@
                 "population": 1513367,
                 "state": "Arizona",
                 "rank": 44,
-                "marker-color": "#323",
+                "marker-color": "#2AF",
                 "marker-size": "medium",
                 "marker-symbol": 44
             },
@@ -979,7 +979,7 @@
                 "population": 1553165,
                 "state": "Pennsylvania",
                 "rank": 45,
-                "marker-color": "#DE0",
+                "marker-color": "#377",
                 "marker-size": "medium",
                 "marker-symbol": 45
             },
@@ -1001,7 +1001,7 @@
                 "population": 2195914,
                 "state": "Texas",
                 "rank": 46,
-                "marker-color": "#A65",
+                "marker-color": "#27E",
                 "marker-size": "medium",
                 "marker-symbol": 46
             },
@@ -1023,7 +1023,7 @@
                 "population": 2718782,
                 "state": "Illinois",
                 "rank": 47,
-                "marker-color": "#67D",
+                "marker-color": "#97D",
                 "marker-size": "medium",
                 "marker-symbol": 47
             },
@@ -1045,7 +1045,7 @@
                 "population": 3884307,
                 "state": "California",
                 "rank": 48,
-                "marker-color": "#002",
+                "marker-color": "#628",
                 "marker-size": "medium",
                 "marker-symbol": 48
             },
@@ -1067,7 +1067,7 @@
                 "population": 8405837,
                 "state": "New York",
                 "rank": 49,
-                "marker-color": "#E95",
+                "marker-color": "#805",
                 "marker-size": "medium",
                 "marker-symbol": 49
             },
@@ -1082,7 +1082,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#A38",
+                "stroke": "#BEA",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1102,7 +1102,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#C2D",
+                "stroke": "#D66",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1122,7 +1122,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#95C",
+                "stroke": "#295",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1142,7 +1142,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#A5D",
+                "stroke": "#E91",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1162,7 +1162,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#A96",
+                "stroke": "#E64",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1182,7 +1182,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#552",
+                "stroke": "#AF0",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1202,7 +1202,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#A8B",
+                "stroke": "#CF6",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1222,7 +1222,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#991",
+                "stroke": "#FE9",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1242,7 +1242,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#897",
+                "stroke": "#766",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1262,7 +1262,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#218",
+                "stroke": "#8D1",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1282,7 +1282,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#356",
+                "stroke": "#D04",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1302,7 +1302,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#C80",
+                "stroke": "#3B5",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1322,7 +1322,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#898",
+                "stroke": "#661",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1342,7 +1342,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#D36",
+                "stroke": "#9FC",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1362,7 +1362,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#496",
+                "stroke": "#557",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1382,7 +1382,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#CF7",
+                "stroke": "#51A",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1402,7 +1402,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#127",
+                "stroke": "#310",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1422,7 +1422,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#E45",
+                "stroke": "#545",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1442,7 +1442,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#42A",
+                "stroke": "#94B",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1462,7 +1462,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#31B",
+                "stroke": "#E4C",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1482,7 +1482,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#F9E",
+                "stroke": "#7A5",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1502,7 +1502,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#C27",
+                "stroke": "#B99",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1522,7 +1522,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#8C6",
+                "stroke": "#CFC",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1542,7 +1542,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#F12",
+                "stroke": "#360",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1562,7 +1562,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#7E1",
+                "stroke": "#6C7",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1582,7 +1582,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#896",
+                "stroke": "#9CA",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1602,7 +1602,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#108",
+                "stroke": "#3FC",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1622,7 +1622,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#1F5",
+                "stroke": "#381",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1642,7 +1642,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#EBF",
+                "stroke": "#C73",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1662,7 +1662,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#DC4",
+                "stroke": "#CE3",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1682,7 +1682,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#673",
+                "stroke": "#B36",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1702,7 +1702,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#362",
+                "stroke": "#CFF",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1722,7 +1722,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#283",
+                "stroke": "#811",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1742,7 +1742,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#931",
+                "stroke": "#80C",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1762,7 +1762,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#9DC",
+                "stroke": "#9B4",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1782,7 +1782,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#308",
+                "stroke": "#98B",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1802,7 +1802,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#9FC",
+                "stroke": "#0AE",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1822,7 +1822,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#406",
+                "stroke": "#8E0",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1842,7 +1842,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#ABE",
+                "stroke": "#28B",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1862,7 +1862,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#81F",
+                "stroke": "#251",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1882,7 +1882,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#08B",
+                "stroke": "#CD9",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1902,7 +1902,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#597",
+                "stroke": "#CEB",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1922,7 +1922,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#E46",
+                "stroke": "#A43",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1942,7 +1942,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#FF8",
+                "stroke": "#6F5",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1962,7 +1962,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#08E",
+                "stroke": "#506",
                 "stroke-width": 2
             },
             "geometry": {
@@ -1982,7 +1982,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#5B8",
+                "stroke": "#7C1",
                 "stroke-width": 2
             },
             "geometry": {
@@ -2002,7 +2002,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#05A",
+                "stroke": "#F5E",
                 "stroke-width": 2
             },
             "geometry": {
@@ -2022,7 +2022,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#52E",
+                "stroke": "#35C",
                 "stroke-width": 2
             },
             "geometry": {
@@ -2042,7 +2042,7 @@
         {
             "type": "Feature",
             "properties": {
-                "stroke": "#C74",
+                "stroke": "#25E",
                 "stroke-width": 2
             },
             "geometry": {
