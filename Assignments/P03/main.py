@@ -1,3 +1,14 @@
+
+#******************************************************************************
+# Name:        Buddy Smith
+# Assignment:  P03
+# Date:        March 13, 2022
+# Description: Given a list of major US cities and UFO sightings, split the
+#              US map into a sectioned off voronoi map and assign each ufo
+#              sighting to a section on the map.  Then create a list
+#              assigning each ufo to the given section
+# Sources:     I had help from Dakota, I was completely lost on the last
+#              half of the assignment
 import json
 import rtree
 import geopandas
@@ -18,6 +29,15 @@ from rich import print as rp
 from shapely.geometry.polygon import Polygon
 from shapely.geometry.multipolygon import MultiPolygon
 class IWantToBelieve2:
+    '''
+    Class:       IWantToBelieve2
+    Data Members: cities: list -> list of major us cities,
+                  ufo: list -> list of ufo sightings in the us
+                  us_border_shape: shape of the us border points
+                  ufo_data_frame: geopanda data frame
+                  boundary:
+                  us_border_projection: projection of cities in us
+    '''
     def __init__(self):
         self.cities = None
         self.ufo = None
@@ -27,12 +47,10 @@ class IWantToBelieve2:
         self.us_border_projection = None
 
     def load_data(self):
+        # Read in data related to assignment
         # does not need to be converted to correct point geometry, already
         #correct
         self.cities = gpd.read_file('data/cities.geojson')
-
-        # rp(self.cities)
-        # Convert to dataframe later
         self.ufo = pd.read_csv('data/BetterUFO.csv')
         self.boundary = gpd.read_file('data/us_border_shp/us_border.shp')
         self.borders = gpd.read_file("data/us_borders.geojson")
@@ -43,27 +61,23 @@ class IWantToBelieve2:
             geometry=geopandas.points_from_xy(
                         self.ufo.lon,
                         self.ufo.lat))
-
-
-
-
-
+        # get shape of us
         self.border_proj = self.cities.to_crs(self.boundary.crs)
         self.border_proj.name='US Boundaries'
         self.boundary_shape = unary_union(self.boundary.geometry)
+        # create points from border projection
         coordinates = points_to_coords(self.border_proj.geometry)
         voronoi_regions_from_coords(coordinates, self.boundary_shape)
         region_polys, region_pts = voronoi_regions_from_coords(
             coordinates,
             self.boundary_shape)
-        # for i, poly in region_polys.items():
-        #     print(i)
-        #     print(poly)
+        #create vornoi plots
         plot_voronoi_polys_with_points_in_area(ax,
                                                self.boundary_shape,
                                                region_polys,
                                                coordinates,
                                                region_pts)
+        #plot cities
         self.cities.plot(ax=ax, color='gray', markersize=5.5)
         rp(self.cities)
         self.ufo.plot(ax=ax, color='green', markersize=.3)
@@ -73,7 +87,8 @@ class IWantToBelieve2:
         ax.set_xlim(minx, maxx)
         ax.set_ylim(miny, maxy)
 
-        #plt.show()
+        # Show plot of us cities and UFOS
+        plt.show()
 
 
         reg_poly_len = len(region_polys)
