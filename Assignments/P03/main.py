@@ -10,20 +10,17 @@
 # Sources:     I had help from Dakota, I was completely lost on the last
 #              half of the assignment
 import json
-import rtree
+
 import geopandas
 import geopandas as gpd
 import numpy
 import pandas as pd
-import numpy as np
-from pprint import pprint
-import matplotlib
+
 import matplotlib.pyplot as plt
-import geovoronoi
-import descartes
+
 import shapely
 from geovoronoi import voronoi_regions_from_coords, points_to_coords
-from geovoronoi.plotting import subplot_for_map, plot_voronoi_polys_with_points_in_area
+from geovoronoi.plotting import  plot_voronoi_polys_with_points_in_area
 from shapely.ops import unary_union
 from rich import print as rp
 from shapely.geometry.polygon import Polygon
@@ -51,38 +48,51 @@ class IWantToBelieve2:
         # does not need to be converted to correct point geometry, already
         #correct
         self.cities = gpd.read_file('data/cities.geojson')
+        #read in csv, convert to dataframe later
         self.ufo = pd.read_csv('data/BetterUFO.csv')
         self.boundary = gpd.read_file('data/us_border_shp/us_border.shp')
+        print(self.boundary.head())
         self.borders = gpd.read_file("data/us_borders.geojson")
+        #create plot
         fig, ax = plt.subplots(figsize=(12, 10))
-        self.borders.plot(ax=ax, color='blue')
+        self.borders.plot(ax=ax)
         self.ufo = geopandas.GeoDataFrame(
             self.ufo,
             geometry=geopandas.points_from_xy(
                         self.ufo.lon,
                         self.ufo.lat))
-        # get shape of us
+        # get shape of us, transforms crs to different reference system
+        #make sure correct projection type
         self.border_proj = self.cities.to_crs(self.boundary.crs)
-        self.border_proj.name='US Boundaries'
+        #convert the points to coordinates,
+        # Returns a geometry containing the union of all geometries in the GeoSeries.
         self.boundary_shape = unary_union(self.boundary.geometry)
         # create points from border projection
         coordinates = points_to_coords(self.border_proj.geometry)
-        voronoi_regions_from_coords(coordinates, self.boundary_shape)
+
+        # Create voronoi diagram
         region_polys, region_pts = voronoi_regions_from_coords(
             coordinates,
             self.boundary_shape)
         #create vornoi plots
+        # plot voronoi with ax, boundaryshape, regional_polys, coordinates
+        # and regional points
         plot_voronoi_polys_with_points_in_area(ax,
                                                self.boundary_shape,
                                                region_polys,
                                                coordinates,
                                                region_pts)
-        #plot cities
-        self.cities.plot(ax=ax, color='gray', markersize=5.5)
-        rp(self.cities)
+        #no point in plotting, covered by sighting
+        self.cities.plot(ax=ax, color='black', markersize=20)
+
+
         self.ufo.plot(ax=ax, color='green', markersize=.3)
-        ax.axis('off')
+
+        #show lat lon grid
+        ax.axis('on')
+        # equal sides
         plt.axis('equal')
+        # set min, max values for each cartesian coordinate
         minx, miny, maxx, maxy = self.boundary.total_bounds
         ax.set_xlim(minx, maxx)
         ax.set_ylim(miny, maxy)
@@ -90,53 +100,60 @@ class IWantToBelieve2:
         # Show plot of us cities and UFOS
         plt.show()
 
-
+        #len = 49
         reg_poly_len = len(region_polys)
+        #begin adding points at 49
         point_begin = reg_poly_len
         ufo_point_dict = dict()
         for point in list(self.ufo.values):
+            # Point[7] is a Point obj
             region_polys.update({point_begin : point[7]})
-            # rp(region_polys[point_begin])
             ufo_point_dict[point_begin] = point[7]
             point_begin += 1
-
-        rtree = geopandas.GeoSeries(region_polys)
+        # create geoseries to query
+        geo_series = geopandas.GeoSeries(region_polys)
         index = 0
-        self.ufo.set_crs(epsg=4326, inplace=True)
-        # dfout = gpd.sjoin(self.cities, self.ufo, how="inner",
-        #                   predicate="within")
+        #set the reference system
+        #self.ufo.set_crs(epsg=4326, inplace=True)
+
         output = []
         polypoints = []
         type_of = 'Oops'
         for i in range(0, reg_poly_len):
-            if (type(rtree[i]) == Polygon):
+            # determine if single polygon or multipolygon
+            if (type(geo_series[i]) == Polygon):
                 type_of = 'Single'
-                polypoints = list(rtree[i].exterior.coords)
-                print(rtree[i].exterior.coords)
-            elif type(rtree[i]) == MultiPolygon:
+                polypoints = numpy.asarray(geo_series[i].exterior.coords)
+                polypoints = polypoints.tolist()
+
+            elif type(geo_series[i]) == MultiPolygon:
                 type_of = 'Multi'
                 polypoints = []
-                for polygon in rtree[i]:
+                for polygon in geo_series[i]:
+
                     coords = numpy.asarray(polygon.exterior.coords)
                     coords = coords.tolist()
+
                     polypoints.append(coords)
 
-            query = rtree.sindex.query(rtree[i])
-
+            #creates rtree spatial index and queries rtree[i] 0 -49
+            # containing ufo points
+            query = geo_series.sindex.query(geo_series[i])
             points =[]
             for point in query:
-                if type(rtree[point]) == shapely.geometry.point.Point:
-                    # print(rtree[point].x)
-                    # print(rtree[point].y)
-                    points.append([rtree[point].x, rtree[point].y])
-                    print()
+                # iterate through ufo points
+                # only interested in the points, not the polygons
+                if type(geo_series[point]) == shapely.geometry.point.Point:
+                    points.append([geo_series[point].x, geo_series[point].y])
+
             output.append({
-                'type': type_of,
-                'poly': polypoints,
-                'points': points
+                'polygon_type': type_of,
+                'polygons': polypoints,
+                'ufo_points': points
             })
+        # writes type of poly, polygon point, and ufo points within it
         with open('PolyPoints.json', 'w') as file:
-            file.write(json.dumps(output))
+            file.write(json.dumps(output, indent=2))
 
         # print(type(rtree))
 iwt = IWantToBelieve2()

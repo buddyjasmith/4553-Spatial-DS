@@ -41,14 +41,12 @@ class EastWest:
         self.console = console.Console()
 
     def random_generator(self):
-        r = random.choice(
-            [random.choice('ABCDEF0123456789') for i in range(6)])
-        g = random.choice(
-            [random.choice('ABCDEF0123456789') for i in range(6)])
-        b = random.choice(
-            [random.choice('ABCDEF0123456789') for i in range(6)])
+        hex_string = 'ABCDEF0123456789'
+        r = random.choice(hex_string)
+        g = random.choice(hex_string)
+        b = random.choice(hex_string)
         return f'#{r}{g}{b}'
-        return (r, g, b)
+
 
     def read_json_data(self):
         '''
@@ -64,23 +62,28 @@ class EastWest:
             print(f'An error occured of type {e}')
         for city in city_data:
             if not city['state'] in self.states:
+                # if state isnt in dictionary
                 state = city['state']
                 self.states[state] = []
+            # append city to each state
             self.states[city['state']].append(city)
+
 
     def filter_cities(self):
         '''
-        :var state:       represents the state stored in self.states key entry
-        :var city_list:   city information stored as a dicitonary
-        :description:     cities must be below 110 longitude, less the 50
+        :description:     cities must be below -110 longitude, less the 50
         :                 latitude and greater than 25 latitude.  Simply put
         :                 we filter out Alaska and Hawaii.
         '''
         for state, city_list in self.states.items():
+            #print(state)
             max = -1
             for entry in city_list:
-                if entry['population'] > max and entry['longitude'] < 110 \
-                        and entry['latitude'] < 50 and entry['latitude'] > 25:
+                # print (entry)
+                # print(entry['longitude'])
+                # print(entry['latitude'])
+                if entry['population'] > max \
+                        and entry['latitude'] < 50 and entry['latitude'] > 24:
                     max = int(entry['population'])
                     self.max_population_centers[state] = entry
             # for entry, value in self.max_population_centers.items():
@@ -100,6 +103,7 @@ class EastWest:
         '''
         ''''''
         for key, value in self.max_population_centers.items():
+            print(f"KEY ={key} : {value}")
             self.ranked_cities.append(value)
 
         # Sort ranked cities by population, this will allow us to use the
@@ -112,7 +116,7 @@ class EastWest:
         for item in self.ranked_cities:
             item['rank'] = num
             num += 1
-        self.console.print(self.ranked_cities, style="black on white")
+        # self.console.print(self.ranked_cities, style="black on white")
 
     def convert_to_geojson(self):
         '''
@@ -125,6 +129,7 @@ class EastWest:
         :               LineStrings are appended to the geolist from west to
         :               east.
         '''
+        print('Reached convert to geojson')
         self.geo_list = {
             "type": "FeatureCollection",
             "features": []
@@ -146,7 +151,7 @@ class EastWest:
         # Sort from west to east, by longitude
         self.ranked_cities = sorted(self.ranked_cities,
                                     key=lambda d: d['longitude'])
-        print(self.ranked_cities)
+        # print(self.ranked_cities)
         # add LineStrings between cooordinates, since sorted by longitude add
         # lines between ranked_cites[i] and ranked_cities[i+1] from west to
         # east

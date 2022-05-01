@@ -1,153 +1,243 @@
+'''
+@Name:              Buddy Smith
+@Assignment:        P04
+@Description:       This program creates a helper module to help facilitate
+@                   P06 functions for P05's api usage.
+'''
 
 
-import json  # json data
-import pandas as pd
-import math  # for math calculation
+import json
+import math
+import os
 import sys
-class Geography:
-    def __init__(self):  # working
+from rich import print as rp
+from shapely.geometry import Polygon
+from math import radians, cos, sin, asin, sqrt
+import pandas as pd
+
+
+class GeoHelper():
+    '''
+    @Class:             GeoHelper
+    @Description:       A geojson helper class built to help the api return
+    @                   correct information.
+    @Data Members:      country_names:  List of country names
+    @                   polygons: a dictionary to contain country polygons
+    @                   poly_count
+    '''
+    def __init__(self):
+        self.country_names: list = list()
+        self.polygons: dict = dict()
+        self.country_data: list = list()
+        self.poly_count: int = 0
+        self.country_continent_frame = pd.read_csv('continents.csv')
+    def load_county_data(self):
+        # load data from countries.json
         try:
-            with open('countries.geojson') as infile:
-                self.DataWorld = json.load(infile)
-        except IOError:
-            print('Wrong File name given')
+            with open('countries.geojson') as file_data:
+                self.country_data = json.load(file_data)
+        except Exception :
+            rp(f'Error loading file')
             sys.exit()
-        try:
-            self.output = open('OutPutFile.geojson', 'w')
-        except IOError:
-            print("there was an issue creating the output file\n")
+        if 'features' in self.country_data:
+            # shortcut it.......
+            self.country_data = self.country_data['features']
+        else:
+            print('WTF!?!')
+            sys.exit()
+    def load_country_polygons(self):
 
-    def getCountryList(self):  # working
-        DictList = []
-        for feature in self.DataWorld['features']:
-            DictList.append(
-                feature['properties']['name'])
-        return (
-            DictList)
+        for country in self.country_data:
+            name = country['properties']['name']
+            # store country names, but this doesn't work for some reason,
+            # this is a real pain. I had to create a separate function just
+            # for this.
+            self.country_names.append(name)
 
-    def getPolyGon(self, name):  # working
-        for feature in self.DataWorld['features']:
-            if (feature['properties']['name'] == name):
-                print("The name of the country is : ", name,
-                      " the coordinates are :\n\n", feature['geometry'][
-                          'coordinates'])
-            coordinates = feature['geometry']['coordinates']
-            return coordinates
+            self.polygons[name] = []
+            for poly in country['geometry']['coordinates']:
+                if len(poly) == 1:
+                    self.polygons[name].append({
+                        # "id": self.poly_count,
+                        'coordinates': poly[0]
+                    })
 
-    def GetCenterPoint(self, name):
-        coordinate = []
-        df1 = pd.read_csv('Assignments/P04/countries.csv')
-        df1.drop(['ISO', 'COUNTRYAFF', 'AFF_ISO'], axis=1, inplace=True)
+
+                else:
+
+                    for single_poly in poly:
+                        self.polygons[name].append({
+                            # "id" : self.poly_count,
+                            "coordinates": single_poly
+                        })
+                        # self.poly_count = self.poly_count + 1
+
+    def load_country_names(self):
+        # store a list of all country names
+        for country in self.country_data:
+            name = country['properties']['name']
+            self.country_names.append(name)
+    def get_country_names(self):
+        return self.country_names
+
+
+
+
+    def get_raw_polygons(self, country='United States'):
+        for key, value in self.polygons.items():
+            if key == country:
+                return value
+
+    def get_geo_polygons(self):
+        results = []
+        for key, polys in self.polygons.items():
+            for poly in polys:
+                results.append(Polygon(poly['coordinates']))
+        return results
+    def build_geo_json(self, names, outname):
+        results = {"type": "FeatureCollection", "features": []}
+        for name in names:
+            for country in self.country_data:
+                if country['properties']['name'] == name:
+                    results['features'].append(country)
+        with open(outname, 'w') as f:
+            json.dump(results, f, indent=4)
+    def get_center_point(self, name):
+        coordinates = []
+        data_frame = pd.read_csv('countries.csv')
+        data_frame.drop(['ISO', 'COUNTRYAFF', 'AFF_ISO'], axis=1, inplace=True)
         XVal = None
         YVal = None
-        for i in range(len(df1.COUNTRY)):
-            if name == df1['COUNTRY'][i]:
-                XVal = df1['longitude'][i]
-                YVal = df1['latitude'][i]
-                coordinate.append(
-                    (XVal, YVal))
+        for i in range(len(data_frame.COUNTRY)):
+            if name == data_frame['COUNTRY'][i]:
 
-        return XVal, YVal
+                XVal = data_frame['longitude'][i]
+                YVal = data_frame['latitude'][i]
+                coordinates.append((XVal, YVal))
+        return (XVal, YVal)
+    def get_continent_by_country(self, name):
+        continent = list()
+        for i in range(len(self.country_continent_frame.Country)):
+            if name == self.country_continent_frame.Country[i]:
+                return self.country_continent_frame.Continent[i]
+    def get_countries_by_continent(self, continent):
+        country_list = list()
+        for i in range(len(self.country_continent_frame.Continent)):
+            if continent == self.country_continent_frame.Continent[i]:
+                country_list.append(self.country_continent_frame.Country[i])
+        return country_list
+    def calculate_distance(self, country0, country1):
+        distance = 0
+        country_list =[]
+        country_list.append(country0)
+        country_list.append(country1)
 
-    # returning the country to the user read in the data name and return the continent it islocated on
-    def GetContinent(self, name):
-        continent = None
-        df2 = pd.read_csv(
-            'Assignments/P04/continents.csv')
-        for i in range(
-                len(df2.Country)):
-            if name == df2['Country'][i]:
-                continent = df2['Continent'][i]
-        return continent
+        for (x1, y1), (x2, y2) in zip(country_list, country_list[1:]):
+            distance = self.haversine(x1, y1, x2, y2)
 
+        return distance
 
-    def CalculateDistance(self, Country1, Country2):
-        CountryDist = []
-        CountryDist.append(Country1)
-        CountryDist.append(Country2)
-        DistanceValue = None
-        for (x1, y1), (x2, y2) in zip(CountryDist, CountryDist[1:]):
-            DistanceValue = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+    def haversine(self, lon1, lat1, lon2, lat2):
+        """
+        Source:https://stackoverflow.com/questions/4913349/haversine-formula-in-python-bearing-and-distance-between-two-gps-points
+        Calculate the great circle distance in kilometers between two points
+        on the earth (specified in decimal degrees)
+        """
+        # convert decimal degrees to radians
+        lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
 
+        # haversine formula
+        dlon = lon2 - lon1
+        dlat = lat2 - lat1
+        a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2
+        c = 2 * asin(sqrt(a))
+        r = 6371  # Radius of earth in kilometers. Use 3956 for miles. Determines return value units.
+        return c * r
 
+    def calculate_bearing(self, pointA, pointB):
+        # source:https://gist.github.com/jeromer/2005586
+        lat1 = math.radians(pointA[0])
+        lat2 = math.radians(pointB[0])
+        diffLong = math.radians(pointB[1] - pointA[1])
+        x = math.sin(diffLong) * math.cos(lat2)
+        y = math.cos(lat1) * math.sin(lat2) - (math.sin(lat1)
+                                               * math.cos(lat2) * math.cos(diffLong))
+        initial_bearing = math.atan2(x, y)
+        # Now we have the initial bearing but math.atan2 return values
+        # from -180° to + 180° which is not what we want for a compass bearing
+        # The solution is to normalize the initial bearing as shown below
+        initial_bearing = math.degrees(initial_bearing)
+        compass_bearing = (initial_bearing + 360) % 360
+        # get compass bearing, added to source material
+        compass_bearing = self.degToCompass(compass_bearing)
+        return compass_bearing
 
-        return DistanceValue * 69
+    def degToCompass(self,num):
+        # source: somewhere on weather.com
+        val = int((num / 22.5) + .5)
+        arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW",
+               "SW", "WSW", "W", "WNW", "NW", "NNW"]
 
-    def getDirection(self, FirstCountry, SecondCountry):
+        return arr[(val % 16)]
 
-        CountryDistance = []
-        CountryDistance.append(FirstCountry)
-        CountryDistance.append(SecondCountry)
-        for (x1, y1), (x2, y2) in zip(CountryDistance, CountryDistance[1:]):
-
-            if x1 < x2 and y1 > y2:
-                CountryDirection = 'NorthWest'
-            elif x1 > x2 and y1 > y2:
-                CountryDirection = 'NorthEast'
-            elif x1 < x2 and y1 < y2:
-                CountryDirection = 'SouthWest'
-            elif x1 > x2 and y1 < y2:
-                CountryDirection = 'SouthEast'
-            else:
-                if x1 == x2 and y1 > y2:
-                    CountryDirection = 'North'
-                elif x1 == x2 and y1 < y2:
-                    CountryDirection = 'South'
-                elif x1 < x2 and y1 == y2:
-                    CountryDirection = 'East'
-                elif x1 > x2 and y1 == y2:
-                    CountryDirection = 'West'
-
-        return CountryDirection
-
-    # working geojson # plug into geojson.io
     def OutPutGeojson(self, name):
-        for feature in self.DataWorld['features']:
-            if (feature['properties']['name'] == name):
-                print("The name of the country is : ", name,
-                      " the coordinates are :\n\n", feature['geometry'][
-                          'coordinates'])  # pass back the coordinate of the specified name
-                coordinates = feature['geometry']['coordinates']
+        # return geojson for country
+        for item in self.country_data:
+            if item['properties']['name'] == name:
 
-                OutFile = {
-                    "type": "FeatureCollection",
-                    "features": []
-                }
-                OutFile['features'].append({
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Polygon",
-                        "coordinates":
-                            coordinates
+                coordinates = item['geometry']['coordinates']
+                if item['geometry']['type'] == "Polygon":
+                    output = {
+                        "type": "FeatureCollection",
+                        "features": []}
+                    output['features'].append({
+                        "type": "Feature",
+                        "properties": {},
+                        "geometry": {
+                            "type": "Polygon",
+                            "coordinates":
+                                coordinates
+                        }
+                    })
+                else:
+
+                    output = {
+                        "type": "FeatureCollection",
+                        "features": []}
+                    output['features'].append({
+                        "type": "Feature",
+                        "properties": {},
+                        "geometry": {
+                            "type": "MultiPolygon",
+                            "coordinates":
+                                coordinates  #
+                        }
+                    })
+        writer = open('output.txt', 'w')
+        writer.write(json.dumps(output, indent=4))
+
+        return output
 
 
-                    }
-                })
-                # write to the ouput file
-
-                self.output.write(json.dumps(OutFile, indent=4))
-                return OutFile
-
-
-# loads up API
+# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    GeoCountry = Geography()  # assign value object of the class
+    gh = GeoHelper()
 
-    #GeoCountry.getPolyGon('Yemen')  # lets get the polygon for yemen
-    ## GeoCountry.CalculateCenterPoint('Yemen')
-    #GeoCountry.OutPutGeojson('Yemen')  # get an output geojson file for yemen
-    print(GeoCountry.GetContinent('Asia'))
-    #
-    # print("center is :\n\n", GeoCountry.GetCenterPoint(
-    #     'Bolivia'))  # get the center point for yemen
-    # print(GeoCountry.GetContinent('United States'))
-    # # print(GeoCountry.CalculateDistance('Yemen','United States'))
-    # Country1 = GeoCountry.GetCenterPoint('Bolivia')
-    # Country2 = GeoCountry.GetCenterPoint('Brazil')
-    # DistanceBetween = GeoCountry.CalculateDistance(Country1, Country2)
-    # print("the distance between the countries is : \n", DistanceBetween)
+    gh.load_county_data()
+    gh.load_country_polygons()
+    gh.load_country_names()
 
 
 
+    country0 = gh.get_center_point('Greenland')
 
+    country1 = gh.get_center_point('China')
+    dist = gh.calculate_distance(country0, country1)
+    print(f"Distance from Country1 to Country2 = {dist} km")
+    bearing = gh.calculate_bearing(country0, country1)
+    print(f"Bearing from Country1 to Country2 = {bearing}")
+    print(gh.get_continent_by_country('France'))
+    print(gh.get_countries_by_continent('Africa'))
+    print(gh.get_raw_polygons('France'))
+
+    print(gh.get_country_names())

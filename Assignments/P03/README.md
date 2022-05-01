@@ -3,8 +3,16 @@
 # Program 3
 # Buddy Smith
 
-|       #        | Folder Link                                                                                       | Assignment Description                                         |
-|:--------------:|---------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
-|    main.py     | [main.py](http://github.com/buddyjasmith/4553-Spatial-DS-Smith/blob/main/Assignments/P03/main.py) | Main file for program 3. Process data and save results as JSON |  |
-| cities.geojson | [Cities](http://github.com/buddyjasmith/4553-Spatial-DS-Smith/blob/main/Assignments/P03/cities.geojson) | Major cities                                                   |
-|PolyPoints.json| [Results](http://github.com/buddyjasmith/4553-Spatial-DS-Smith/blob/main/Assignments/P03/PolyPoints.json)| Json file containing all ufo sightings per major city          |
+
+
+
+# Files
+
+|  #  | File     | Description                            |
+|:---:|----------|----------------------------------------|
+|  1  | Main.py  | Main file that performs all operations |
+|  2  | data/cities.geojson | data related to city info              |
+|  3  | data/BetterUFO.csv | Dakota's better ufo data               |
+|  4  |data/us_border_shp/us_border.shp        | us border shape projection             |
+|  5  | data/us_borders.geojson         | us border shape related geojson info   |                              |
+|  6  | Main.py  |                                        |  5 | data/us_borders.geojson         | end product file holding each ufo assigned to each vornoi point   |                              | |

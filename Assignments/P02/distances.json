@@ -1,8 +1,8 @@
 [
     {
         "city": "Portland",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -122.676482,
+        "latitude": 45.523062,
         "distance": [
             [
                 "Seattle",
@@ -200,8 +200,8 @@
     },
     {
         "city": "Seattle",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -122.332071,
+        "latitude": 47.606209,
         "distance": [
             [
                 "Portland",
@@ -399,8 +399,8 @@
     },
     {
         "city": "Los Angeles",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -118.243685,
+        "latitude": 34.052234,
         "distance": [
             [
                 "Las Vegas",
@@ -598,8 +598,8 @@
     },
     {
         "city": "Boise City",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -116.214607,
+        "latitude": 43.61871,
         "distance": [
             [
                 "Salt Lake City",
@@ -797,8 +797,8 @@
     },
     {
         "city": "Las Vegas",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -115.13983,
+        "latitude": 36.169941,
         "distance": [
             [
                 "Los Angeles",
@@ -996,8 +996,8 @@
     },
     {
         "city": "Phoenix",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -112.074037,
+        "latitude": 33.448377,
         "distance": [
             [
                 "Las Vegas",
@@ -1195,8 +1195,8 @@
     },
     {
         "city": "Salt Lake City",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -111.891047,
+        "latitude": 40.760779,
         "distance": [
             [
                 "Boise City",
@@ -1394,8 +1394,8 @@
     },
     {
         "city": "Billings",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -108.50069,
+        "latitude": 45.783286,
         "distance": [
             [
                 "Cheyenne",
@@ -1593,8 +1593,8 @@
     },
     {
         "city": "Albuquerque",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -106.605553,
+        "latitude": 35.085334,
         "distance": [
             [
                 "Denver",
@@ -1792,8 +1792,8 @@
     },
     {
         "city": "Denver",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -104.990251,
+        "latitude": 39.739236,
         "distance": [
             [
                 "Cheyenne",
@@ -1991,8 +1991,8 @@
     },
     {
         "city": "Cheyenne",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -104.820246,
+        "latitude": 41.139981,
         "distance": [
             [
                 "Denver",
@@ -2190,8 +2190,8 @@
     },
     {
         "city": "Oklahoma City",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -97.516428,
+        "latitude": 35.46756,
         "distance": [
             [
                 "Wichita",
@@ -2389,8 +2389,8 @@
     },
     {
         "city": "Wichita",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -97.336111,
+        "latitude": 37.688889,
         "distance": [
             [
                 "Oklahoma City",
@@ -2588,8 +2588,8 @@
     },
     {
         "city": "Fargo",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -96.789803,
+        "latitude": 46.877186,
         "distance": [
             [
                 "Sioux Falls",
@@ -2787,8 +2787,8 @@
     },
     {
         "city": "Sioux Falls",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -96.731103,
+        "latitude": 43.544596,
         "distance": [
             [
                 "Omaha",
@@ -2986,8 +2986,8 @@
     },
     {
         "city": "Omaha",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -95.997988,
+        "latitude": 41.252363,
         "distance": [
             [
                 "Sioux Falls",
@@ -3185,8 +3185,8 @@
     },
     {
         "city": "Houston",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -95.369803,
+        "latitude": 29.760427,
         "distance": [
             [
                 "New Orleans",
@@ -3384,8 +3384,8 @@
     },
     {
         "city": "Kansas City",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -94.578567,
+        "latitude": 39.099727,
         "distance": [
             [
                 "Omaha",
@@ -3583,8 +3583,8 @@
     },
     {
         "city": "Des Moines",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -93.609106,
+        "latitude": 41.600545,
         "distance": [
             [
                 "Omaha",
@@ -3782,8 +3782,8 @@
     },
     {
         "city": "Minneapolis",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -93.265011,
+        "latitude": 44.977753,
         "distance": [
             [
                 "Des Moines",
@@ -3981,8 +3981,8 @@
     },
     {
         "city": "Little Rock",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -92.289595,
+        "latitude": 34.746481,
         "distance": [
             [
                 "Memphis",
@@ -4180,8 +4180,8 @@
     },
     {
         "city": "Jackson",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -90.18481,
+        "latitude": 32.298757,
         "distance": [
             [
                 "New Orleans",
@@ -4379,8 +4379,8 @@
     },
     {
         "city": "New Orleans",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -90.071532,
+        "latitude": 29.951066,
         "distance": [
             [
                 "Jackson",
@@ -4578,8 +4578,8 @@
     },
     {
         "city": "Memphis",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -90.04898,
+        "latitude": 35.149534,
         "distance": [
             [
                 "Little Rock",
@@ -4777,8 +4777,8 @@
     },
     {
         "city": "Milwaukee",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -87.906474,
+        "latitude": 43.038902,
         "distance": [
             [
                 "Chicago",
@@ -4976,8 +4976,8 @@
     },
     {
         "city": "Chicago",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -87.629798,
+        "latitude": 41.878114,
         "distance": [
             [
                 "Milwaukee",
@@ -5175,8 +5175,8 @@
     },
     {
         "city": "Birmingham",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -86.80249,
+        "latitude": 33.520661,
         "distance": [
             [
                 "Atlanta",
@@ -5374,8 +5374,8 @@
     },
     {
         "city": "Indianapolis",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -86.158068,
+        "latitude": 39.768403,
         "distance": [
             [
                 "Louisville/Jefferson County",
@@ -5573,8 +5573,8 @@
     },
     {
         "city": "Louisville/Jefferson County",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -85.758456,
+        "latitude": 38.252665,
         "distance": [
             [
                 "Indianapolis",
@@ -5772,8 +5772,8 @@
     },
     {
         "city": "Atlanta",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -84.387982,
+        "latitude": 33.748995,
         "distance": [
             [
                 "Birmingham",
@@ -5971,8 +5971,8 @@
     },
     {
         "city": "Detroit",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -83.045754,
+        "latitude": 42.331427,
         "distance": [
             [
                 "Columbus",
@@ -6170,8 +6170,8 @@
     },
     {
         "city": "Columbus",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -82.998794,
+        "latitude": 39.961176,
         "distance": [
             [
                 "Charleston",
@@ -6369,8 +6369,8 @@
     },
     {
         "city": "Jacksonville",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -81.655651,
+        "latitude": 30.332184,
         "distance": [
             [
                 "Columbia",
@@ -6568,8 +6568,8 @@
     },
     {
         "city": "Charleston",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -81.632623,
+        "latitude": 38.34982,
         "distance": [
             [
                 "Columbus",
@@ -6767,8 +6767,8 @@
     },
     {
         "city": "Columbia",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -81.034814,
+        "latitude": 34.00071,
         "distance": [
             [
                 "Charlotte",
@@ -6966,8 +6966,8 @@
     },
     {
         "city": "Charlotte",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -80.843127,
+        "latitude": 35.227087,
         "distance": [
             [
                 "Columbia",
@@ -7165,8 +7165,8 @@
     },
     {
         "city": "Washington",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -77.036871,
+        "latitude": 38.907192,
         "distance": [
             [
                 "Baltimore",
@@ -7364,8 +7364,8 @@
     },
     {
         "city": "Baltimore",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -76.612189,
+        "latitude": 39.290385,
         "distance": [
             [
                 "Washington",
@@ -7563,8 +7563,8 @@
     },
     {
         "city": "Virginia Beach",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -75.977985,
+        "latitude": 36.852926,
         "distance": [
             [
                 "Washington",
@@ -7762,8 +7762,8 @@
     },
     {
         "city": "Wilmington",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -75.539788,
+        "latitude": 39.739072,
         "distance": [
             [
                 "Philadelphia",
@@ -7961,8 +7961,8 @@
     },
     {
         "city": "Philadelphia",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -75.165222,
+        "latitude": 39.952584,
         "distance": [
             [
                 "Wilmington",
@@ -8160,8 +8160,8 @@
     },
     {
         "city": "Newark",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -74.172367,
+        "latitude": 40.735657,
         "distance": [
             [
                 "New York",
@@ -8359,8 +8359,8 @@
     },
     {
         "city": "New York",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -74.005941,
+        "latitude": 40.712784,
         "distance": [
             [
                 "Newark",
@@ -8558,8 +8558,8 @@
     },
     {
         "city": "Burlington",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -73.212072,
+        "latitude": 44.475882,
         "distance": [
             [
                 "Manchester",
@@ -8757,8 +8757,8 @@
     },
     {
         "city": "Bridgeport",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -73.195177,
+        "latitude": 41.186548,
         "distance": [
             [
                 "New York",
@@ -8956,8 +8956,8 @@
     },
     {
         "city": "Manchester",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -71.454789,
+        "latitude": 42.99564,
         "distance": [
             [
                 "Boston",
@@ -9155,8 +9155,8 @@
     },
     {
         "city": "Providence",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -71.412834,
+        "latitude": 41.823989,
         "distance": [
             [
                 "Boston",
@@ -9354,8 +9354,8 @@
     },
     {
         "city": "Boston",
-        "longitude": -70.255326,
-        "latitude": 43.661471,
+        "longitude": -71.05888,
+        "latitude": 42.360082,
         "distance": [
             [
                 "Providence",

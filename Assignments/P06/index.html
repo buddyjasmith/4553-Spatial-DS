@@ -1,0 +1,402 @@
+<!--
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                              //
+//                               Authors: Ethan Coyle and Buddy Smith                           //
+//                               Class- Spatial Data Structures                                 //
+//                               Date: 10/31/2019                                               //
+//                               Instructor: Dr. Griffin                                        //
+//                               Assignment: P06 Create Worldle Like Game                       //
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                              //
+// The purpose of this assignement is creating a web base javascript application that will      //
+// allow the user to play a guessing game. The user will be able to select a country from a     //
+// dropdown list and the application will then randomly select a country from the list and      //
+// after selecting a country from the drop down list, the polygon for that country will be      //
+// displayed on the map for the user to see and they will be PolyGonColor coded based on the    //
+// distance if the user guesses the correct country, then the polygon will be colored green.    //
+// After the correct country is guessed, then the user will be able to reload the local host    //
+// and play again.                                                                              //
+//                                                                                              //
+// User instructions : run the main.py  hit ctrl +f5 to run the program.                        //
+//                     then navigate to localhost:5000/index.html                               //
+//                     or from vscode hit the icon marked Go Live                               //
+//        (as long as the APi is running and you go live to local host, the game will work)     //
+//////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Our Worldle Clone</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            width: 60%;
+            height: 100%;
+            float: left;
+        }
+
+        #text {
+            height: 100%;
+            width: 35%;
+            float: right;
+        }
+
+        #country {
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        #geojsontext {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            width: 90%;
+            height: 80%;
+        }
+
+        #submit {
+            margin: 20px;
+        }
+
+        /* More table styling */
+        /* https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy */
+
+        #history {
+            border-collapse: collapse;
+            visibility: hidden;
+        }
+
+        #history td,
+        #history th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            margin: 0px;
+        }
+
+        #history tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #history tr:hover {
+            background-color: #ddd;
+        }
+
+        #history th {
+            padding-top: 6px;
+            padding-bottom: 6px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+            margin: 0px;
+        }
+    </style>
+
+  </head>
+
+  <body>
+    <div id="map"></div>
+    <h1>Welcome to Our Worldle Game</h1>
+    <h3>By:Ethan Coyle and Buddy Smith</h2>
+        <p>1. Select a Country and hit Submit( the country will display)<br>
+           2. The direction will point you to the Correct Country<br>
+           3. If you guess the country correctly, the color will turn green<br><br>
+           <h3>Note: If the color is Pink, you are really close to the country<br>
+                  If the Country Color is Red, you are Far Away</h3></p>
+
+    <div id="text">
+      <label for="country">Choose a Country:</label>
+
+      <select name="country" id="country"></select>
+
+      <input type="button" id="submit" value="Submit"/>
+
+      <br>
+      <label for="dir">Direction To Country:</label>
+      <p id="dir" style="display:inline"></p>
+      <br>
+
+      <br>
+      <label for="guesses">Closest Country Guess:</label>
+      <ul id = "guesses"></ul>
+    </div>
+
+    <script>
+
+        myStorage = window.localStorage;
+
+        let bound = [[[90, 180], [-90, -180]]] // get the bounding box of the map
+        // let the map fall within the bounds of the box iteself
+        let map = L.map("map", {maxBounds: bound, maxBoundsViscosity: 1.0}).setView([0, 0], 0);
+        //initialize the level of zoom inside of the map
+        map.setMinZoom(3)
+        map.setMaxZoom(8)
+        L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png", {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attribution/">CartoDB</a>',
+                    subdomains: "abcd",
+                    maxZoom: 19
+                }).addTo(map);
+
+                // Add Layer Group
+        let layers = L.layerGroup().addTo(map);
+
+        document.getElementById("submit").addEventListener("click", DisplayPoly);
+
+        let CountryToGuess = null // country list not initialized yet until the list is loaded
+        var guesses = []// create empty list for the guesses
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // █████╗ ██████╗ ██╗     ██████╗ █████╗ ██╗     ██╗         ███████╗██╗   ██╗███╗   ██╗ ██████╗████████╗██╗ ██████╗ ███╗   ██╗███████╗  //
+        // ██╔══██╗██╔══██╗██║    ██╔════╝██╔══██╗██║     ██║         ██╔════╝██║   ██║████╗  ██║██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝ //
+        // ███████║██████╔╝██║    ██║     ███████║██║     ██║         █████╗  ██║   ██║██╔██╗ ██║██║        ██║   ██║██║   ██║██╔██╗ ██║███████╗ //
+        // ██╔══██║██╔═══╝ ██║    ██║     ██╔══██║██║     ██║         ██╔══╝  ██║   ██║██║╚██╗██║██║        ██║   ██║██║   ██║██║╚██╗██║╚════██║ //
+        // ██║  ██║██║     ██║    ╚██████╗██║  ██║███████╗███████╗    ██║     ╚██████╔╝██║ ╚████║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║███████║ //
+        // ╚═╝  ╚═╝╚═╝     ╚═╝     ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝    ╚═╝      ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝ //
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        //                                                                                               //
+        // ██████╗ ██████╗ ██╗   ██╗███╗   ██╗████████╗██████╗ ██╗   ██╗    ██╗     ██╗███████╗████████╗ //
+        // ██╔════╝██╔═══██╗██║   ██║████╗  ██║╚══██╔══╝██╔══██╗╚██╗ ██╔╝    ██║     ██║██╔════╝╚══██╔══╝//
+        // ██║     ██║   ██║██║   ██║██╔██╗ ██║   ██║   ██████╔╝ ╚████╔╝     ██║     ██║███████╗   ██║   //
+        // ██║     ██║   ██║██║   ██║██║╚██╗██║   ██║   ██╔══██╗  ╚██╔╝      ██║     ██║╚════██║   ██║   //
+        // ╚██████╗╚██████╔╝╚██████╔╝██║ ╚████║   ██║   ██║  ██║   ██║       ███████╗██║███████║   ██║   //
+        //  ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝       ╚══════╝╚═╝╚══════╝   ╚═╝   //
+        //                                                                                               //
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+        function loadCountryList()
+        {
+            //initialize the api call to get the list of countrys for the dropdown list
+            let url = "http://127.0.0.1:8080/CountryList/";
+            fetch(url)
+                .then(function (response)
+                {
+                    return response.json();// with the response back from the server, return the json data
+                })
+                .then(function (data)
+                {
+                    var CountryNameList = document.getElementById("country");//each element is gained from the html page
+
+                    names = data['countries'].sort();// sort the data by the country name
+
+                    CountryNameList.innerHTML = "";// these options will populate the dropdown list
+
+                    for (var i = 0; i < names.length; i++) //for loop to loop through the names array
+                    {
+                        var Option = data['countries'][i];
+                        var DropDownElement = document.createElement("option");
+                        DropDownElement.textContent = Option;
+                        DropDownElement.value = Option;
+                        CountryNameList.appendChild(DropDownElement);// append all the eleemnts to the dropdown list
+                    }
+
+                    CountryToGuess = names[Math.floor(Math.random() * names.length)] // CountryNameList a random country for the user to guess
+                    console.log(`Country to guess ${CountryToGuess}`)
+                });
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // ██████╗ ██╗███████╗██████╗ ██╗      █████╗ ██╗   ██╗     ██████╗ ██████╗ ██╗   ██╗███╗   ██╗████████╗██████╗ ██╗   ██╗ //
+        // ██╔══██╗██║██╔════╝██╔══██╗██║     ██╔══██╗╚██╗ ██╔╝    ██╔════╝██╔═══██╗██║   ██║████╗  ██║╚══██╔══╝██╔══██╗╚██╗ ██╔╝ //
+        // ██║  ██║██║███████╗██████╔╝██║     ███████║ ╚████╔╝     ██║     ██║   ██║██║   ██║██╔██╗ ██║   ██║   ██████╔╝ ╚████╔╝  //
+        // ██║  ██║██║╚════██║██╔═══╝ ██║     ██╔══██║  ╚██╔╝      ██║     ██║   ██║██║   ██║██║╚██╗██║   ██║   ██╔══██╗  ╚██╔╝   //
+        // ██████╔╝██║███████║██║     ███████╗██║  ██║   ██║       ╚██████╗╚██████╔╝╚██████╔╝██║ ╚████║   ██║   ██║  ██║   ██║    //
+        // ╚═════╝ ╚═╝╚══════╝╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝        ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝    //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        function DisplayPoly() // now to actually display the country from the guesses
+        {
+            var e = document.getElementById("country");
+            var name = e.options[e.selectedIndex].text;
+            var PolyGonColor = null
+
+
+            if(name == CountryToGuess)// if the correct country is guessed,change the PolyGonColor of the country to green
+            {
+                PolyGonColor = '#00FF00'//default PolyGonColor
+                document.getElementById("country").disabled = true;//disable the dropdown list so the user can't guess again
+                document.getElementById("submit").disabled = true; //disable the submit button so the user can't guess again
+                guesses.push([name, 0])
+
+            }
+            else
+            {
+                //get the api call for the distance between the two countries
+                fetch('http://127.0.0.1:8080/FindDistance/{FirstCountry},{SecondCountry}?FirstPoly=' + name + '&SecondPoly=' + CountryToGuess)
+                .then(function (response)
+                {
+                    return response.json();//grab the url response
+                })
+                .then(function (data)
+                {
+                    CountryDistance = Math.floor(data['distance'])
+                    console.log(data)
+                    console.log(CountryDistance)
+
+
+                    if(CountryDistance/1000 <= 1)
+                        {
+                            PolyGonColor="#FC09F3" // pink color
+                        }
+                    else if(CountryDistance/1000 <=2)
+                    {
+                        PolyGonColor = "CCFFCC"// getting even lighter green
+                    }
+                    else if(CountryDistance/1000 <= 3)
+                    {
+                        PolyGonColor = "#FFFF66"// getting even lighter yellow
+                    }
+                    else if(CountryDistance/1000 <= 4)
+                    {
+                        PolyGonColor = "#66FFFF"// purple
+                    }
+                    else
+                    {
+                        PolyGonColor = "#FF0000"// red
+                    }
+
+                    guesses.push([name, CountryDistance])
+                });
+
+                ////////////////////////////////////////////////////////////////////////
+                // ██████╗ ██╗██████╗ ███████╗ ██████╗████████╗██╗ ██████╗ ███╗   ██╗ //
+                // ██╔══██╗██║██╔══██╗██╔════╝██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║ //
+                // ██║  ██║██║██████╔╝█████╗  ██║        ██║   ██║██║   ██║██╔██╗ ██║ //
+                // ██║  ██║██║██╔══██╗██╔══╝  ██║        ██║   ██║██║   ██║██║╚██╗██║ //
+                // ██████╔╝██║██║  ██║███████╗╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║ //
+                // ╚═════╝ ╚═╝╚═╝  ╚═╝╚══════╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ //
+                ////////////////////////////////////////////////////////////////////////
+
+                //read the api call and get the distance between the two countries based on the url
+                fetch('http://127.0.0.1:8080/FindDirection/{Country1},{Country2}?CountryNo1=' + CountryToGuess + '&CountryNo2=' + name)
+                .then(function (response)
+                {
+                    return response.json();//get the json response
+                })
+                .then(function (data) // with the data returned process it
+                {
+                    let text = null// at the end of the function, this will be the text that will be displayed
+
+                    // after finding the distance we need to use our compass
+                    // which will be the direction from the first country to the second
+
+                    if(data['CountryDirection'] === 'North')// northern direction
+                    {
+                        text = CountryDistance+' miles  ⬆️ '// display the north arrow
+                    }
+                    else if(data['CountryDirection'] === 'South')// south direction
+                    {
+                        text = CountryDistance+' miles ⬇️ '// display the south arrow
+                    }
+                    else if(data['CountryDirection'] === 'East')//eastern direction
+                    {
+                        text = CountryDistance+' miles ➡️ '// display the east arrow
+                    }
+                    else if(data['CountryDirection'] === 'West')// western direction
+                    {
+                        text = CountryDistance+' miles ⬅️ '// display the west arrow
+                    }
+                    if(data['CountryDirection'] === 'NorthWest')//northwestern direction
+                    {
+                        text = CountryDistance+' miles ↖️ '// display the north west arrow
+                    }
+                    else if(data['CountryDirection'] === 'SouthWest')// to the southwest
+                    {
+                        text = CountryDistance+' miles ↙️ '// display the south west arrow
+                    }
+                    else if(data['CountryDirection'] === 'SouthEast')// or the southeeast direction
+                    {
+                        text = CountryDistance+' miles ↘️ '//    display the south east arrow
+                    }
+                    else // if none of these are true, then will be in the northeast direction
+                    {
+                        text = CountryDistance+' miles ↗️ ' // northeastern direction
+                    }
+
+
+                    document.getElementById("dir").textContent = text;// diaplying the actual direction icon in the html
+                });
+            }
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // ██████╗ ██╗███████╗██████╗ ██╗      █████╗ ██╗   ██╗     ██████╗ ██████╗ ██╗   ██╗███╗   ██╗████████╗██████╗ ██╗   ██╗ //
+            // ██╔══██╗██║██╔════╝██╔══██╗██║     ██╔══██╗╚██╗ ██╔╝    ██╔════╝██╔═══██╗██║   ██║████╗  ██║╚══██╔══╝██╔══██╗╚██╗ ██╔╝ //
+            // ██║  ██║██║███████╗██████╔╝██║     ███████║ ╚████╔╝     ██║     ██║   ██║██║   ██║██╔██╗ ██║   ██║   ██████╔╝ ╚████╔╝  //
+            // ██║  ██║██║╚════██║██╔═══╝ ██║     ██╔══██║  ╚██╔╝      ██║     ██║   ██║██║   ██║██║╚██╗██║   ██║   ██╔══██╗  ╚██╔╝   //
+            // ██████╔╝██║███████║██║     ███████╗██║  ██║   ██║       ╚██████╗╚██████╔╝╚██████╔╝██║ ╚████║   ██║   ██║  ██║   ██║    //
+            // ╚═════╝ ╚═╝╚══════╝╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝        ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝    //
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            let url = "http://127.0.0.1:8080/Geojson/" + name; // get the url of the geojson api call to get the country choice polygon
+
+            fetch(url)
+                .then(function (response)
+                {
+                    return response.json();//wait for the response to return
+                })
+                .then(function (data) // with the data returned process it
+                {
+                    console.log(data)// see the data returned is correct
+                    result = data // the result is the geojson of the country choice
+                    console.log(result) // see if what the api call returns is correct
+                    let defaultStyle =
+                    {
+                        fillColor: PolyGonColor,
+                        weight: 2,
+                        opacity: 1,
+                        fillOpacity: 1
+                    }
+
+                    //add this to the layers of the map inside of the loccal host
+                    L.geoJSON(result, {style: defaultStyle}).addTo(layers);
+                    //sorting the list in the order of closest to furthest
+                    guesses.sort(([a, b], [c, d]) => b - d);
+                    //these will be displayed inside of the inner html over to the right of the map
+                    document.getElementById("guesses").innerHTML = "";
+
+                    for(i = 0; i < guesses.length; i++)
+                    {
+                        var CountryNameList = document.getElementById("guesses");
+                        var DropDownElement = document.createElement("li");
+                        DropDownElement.textContent = guesses[i][0];
+                        DropDownElement.value = guesses[i][0];
+                        CountryNameList.appendChild(DropDownElement);
+                    }
+                    //the following will be displayed in the inner html over to the left of the map
+                    //and once the country is selected the options will be removed
+                    selectbox = document.getElementById("country")
+                    var i;
+                    for(i=0; i < selectbox.options.length; i++)
+                    {
+                        if(selectbox.options[i].selected)
+                        {
+                            selectbox.remove(i);
+                        }
+                    }
+                });
+        }
+        //first we need to initilize what happens on the windows load page event
+        window.onload = function ()
+        {
+            loadCountryList();//go to the function ccalled loadCountryList
+        };
+        //end the script for the country stuff reading from the api
+    </script>
+</body>
+
+</html>
